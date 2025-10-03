@@ -1,0 +1,33 @@
+version: '1.0'
+
+services:
+  swap-optimizer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swap-optimizer-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - INFURA_URL=${INFURA_URL}
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+    networks:
+      - swap-optimizer-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  swap-optimizer-network:
