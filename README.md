@@ -8,5 +8,8 @@ I wanted to follow up as I feel I could have performed better during the technic
 I'm confident the take-home assignment will better demonstrate my technical capabilities and approach to development. I'm highly committed to delivering quality work, and I'm happy to provide references from my previous managers who can speak to my dedication and skills.
 Thank you again for the opportunity.
 
+p.s
+I have also fixed my mistakes from the interview we had.
+
 Best regards,
 Dima Shevchuk
