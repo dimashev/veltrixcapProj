@@ -10,10 +10,11 @@ detect_and_install_node() {
         echo "[INFO] Node.js already installed: $(node -v)"
         echo "[INFO] npm version: $(npm -v)"
         nodeVersion="$(node -v)"
-        expr nodeVersionNumber=${nodeVersion#*v}
-            if [nodeVersionNumber < "18" ] 
-            else
-                return
+        nodeVersionNumber=${nodeVersion#v}
+        majorVersion=${nodeVersionNumber%%.*}
+        if [ "$majorVersion" -ge 18 ]; then
+            return
+        fi
     fi
 
     echo "[INFO] Node.js or npm not found or the version is less then 18. Attempting installation..."
